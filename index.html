@@ -1,24 +1,32 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>Nuh Afridi | Engineering Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4fdf4;
-      color: #1f3d1f;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f4f8;
+      color: #263238;
+      line-height: 1.6;
     }
     header {
-      background-color: #3e8e41;
-      padding: 20px;
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: white;
       position: sticky;
       top: 0;
+      z-index: 1000;
     }
     nav a {
       margin-left: 20px;
@@ -29,82 +37,120 @@
     nav a:hover {
       text-decoration: underline;
     }
+    .hero {
+      background: linear-gradient(to right, #a5d6a7, #81c784);
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+    }
     section {
       padding: 60px 40px;
     }
-    h1, h2 {
-      color: #2e5e2e;
+    h2 {
+      margin-bottom: 20px;
+      color: #1b5e20;
     }
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      margin-top: 20px;
     }
     .card {
       background: white;
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
     }
     .card:hover {
       transform: translateY(-5px);
     }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
     footer {
-      background-color: #3e8e41;
+      background-color: #2e7d32;
       color: white;
       text-align: center;
       padding: 20px;
       margin-top: 40px;
     }
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <h2>My Portfolio</h2>
+    <h2>Nuh Afridi</h2>
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#hobbies">Hobbies</a>
     </nav>
-  </header> <section id="home">
-    <h1>Welcome!</h1>
-    <p>Hi! This is my personal project board and portfolio. Here you'll find my engineering work, hobbies, and a little bit about me.</p>
-  </section> <section id="about">
+  </header>
+
+  <section class="hero" id="home">
+    <h1>Welcome to My Portfolio</h1>
+    <p>Explore my engineering projects, personal interests, and design work — all in one place.</p>
+  </section>
+
+  <section id="about">
     <h2>About Me</h2>
-    <p>A short description about who you are, your engineering interests, what you're studying, and the design teams you're part of.</p>
-  </section> <section id="projects">
-    <h2>Projects</h2><h3>Electrical Projects</h3>
-<div class="card-grid">
-  <div class="card">
-    <h4>Project Name</h4>
-    <p>Short description of your electrical project.</p>
-  </div>
-</div>
+    <p>I’m an Electrical Engineering student at Memorial University, specializing in control systems, automation, and semiconductor physics. I thrive in collaborative environments and love building practical solutions through design teams and hands-on projects.</p>
+  </section>
 
-<h3>Software Projects</h3>
-<div class="card-grid">
-  <div class="card">
-    <h4>Project Name</h4>
-    <p>Short description of your software project.</p>
-  </div>
-</div>
+  <section id="projects">
+    <h2>Projects</h2>
 
-<h3>Mechanical Projects</h3>
-<div class="card-grid">
-  <div class="card">
-    <h4>Project Name</h4>
-    <p>Short description of your mechanical project.</p>
-  </div>
-</div>
+    <h3>Electrical Projects</h3>
+    <div class="card-grid">
+      <div class="card">
+        <img src="electrical1.jpg" alt="Electrical Project">
+        <h4>Weather Balloon Sensor Array</h4>
+        <p>Designed and deployed a sensor suite for atmospheric data collection using analog circuitry and microcontrollers.</p>
+      </div>
+    </div>
 
-  </section> <section id="hobbies">
+    <h3>Software Projects</h3>
+    <div class="card-grid">
+      <div class="card">
+        <img src="software1.jpg" alt="Software Project">
+        <h4>Data Logger in C++</h4>
+        <p>Built a memory-safe data logging tool using modern C++ practices and template abstraction for embedded systems.</p>
+      </div>
+    </div>
+
+    <h3>Mechanical Projects</h3>
+    <div class="card-grid">
+      <div class="card">
+        <img src="mechanical1.jpg" alt="Mechanical Project">
+        <h4>Water Wheel Generator</h4>
+        <p>Prototyped a small-scale hydroelectric generator with CAD modeling and mechanical optimization for rural energy use.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hobbies">
     <h2>Hobbies</h2>
-    <p>Describe your hobbies here — gaming, design, building stuff, biking, anything you enjoy.</p>
-  </section> <footer>
-    <p>© 2025 My Portfolio</p>
+    <p>Outside of engineering, I enjoy gaming, biking, building DIY electronics, and exploring language and literature — especially poetic concepts like “reverie.”</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Nuh Afridi | Built with GitHub Pages</p>
   </footer>
+
 </body>
 </html>
