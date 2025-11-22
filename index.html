@@ -6,16 +6,13 @@
   <title>Nuh Afridi | Engineering Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #f0f4f8;
       color: #263238;
       line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
     header {
       background-color: #2e7d32;
@@ -34,30 +31,16 @@
       text-decoration: none;
       font-weight: bold;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
     .hero {
       background: linear-gradient(to right, #a5d6a7, #81c784);
       padding: 100px 40px;
       text-align: center;
     }
-    .hero h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin: auto;
-    }
-    section {
-      padding: 60px 40px;
-    }
-    h2 {
-      margin-bottom: 20px;
-      color: #1b5e20;
-    }
+    .hero h1 { font-size: 3em; margin-bottom: 20px; }
+    .hero p { font-size: 1.2em; max-width: 600px; margin: auto; }
+    section { padding: 60px 40px; }
+    h2 { margin-bottom: 20px; color: #1b5e20; }
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -68,15 +51,26 @@
       border-radius: 12px;
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .card.reveal {
+      animation: fadeInUp 0.8s forwards;
     }
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) rotate(-1deg);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
     .card img {
       width: 100%;
       border-radius: 8px;
       margin-bottom: 10px;
+    }
+    .card-icon {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #2e7d32;
     }
     footer {
       background-color: #2e7d32;
@@ -85,8 +79,59 @@
       padding: 20px;
       margin-top: 40px;
     }
-    html {
-      scroll-behavior: smooth;
+    html { scroll-behavior: smooth; }
+
+    /* Dark mode */
+    .dark {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .dark header, .dark footer {
+      background-color: #1b5e20;
+    }
+    .dark .card {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Toggle button */
+    #theme-toggle {
+      background: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    /* Education cards */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .edu-card {
+      background: white;
+      border-left: 5px solid #2e7d32;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      opacity: 0;
+    }
+    .edu-card.reveal {
+      animation: fadeInUp 0.8s forwards;
+    }
+    .edu-card:hover {
+      transform: translateY(-3px);
     }
   </style>
 </head>
@@ -99,6 +144,8 @@
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#hobbies">Hobbies</a>
+      <a href="#education">Education</a>
+      <button id="theme-toggle">🌙 Dark Mode</button>
     </nav>
   </header>
 
@@ -114,29 +161,19 @@
 
   <section id="projects">
     <h2>Projects</h2>
-
-    <h3>Electrical Projects</h3>
     <div class="card-grid">
       <div class="card">
-        <img src="electrical1.jpg" alt="Electrical Project">
+        <div class="card-icon">⚡</div>
         <h4>Weather Balloon Sensor Array</h4>
         <p>Designed and deployed a sensor suite for atmospheric data collection using analog circuitry and microcontrollers.</p>
       </div>
-    </div>
-
-    <h3>Software Projects</h3>
-    <div class="card-grid">
       <div class="card">
-        <img src="software1.jpg" alt="Software Project">
+        <div class="card-icon">💻</div>
         <h4>Data Logger in C++</h4>
         <p>Built a memory-safe data logging tool using modern C++ practices and template abstraction for embedded systems.</p>
       </div>
-    </div>
-
-    <h3>Mechanical Projects</h3>
-    <div class="card-grid">
       <div class="card">
-        <img src="mechanical1.jpg" alt="Mechanical Project">
+        <div class="card-icon">⚙️</div>
         <h4>Water Wheel Generator</h4>
         <p>Prototyped a small-scale hydroelectric generator with CAD modeling and mechanical optimization for rural energy use.</p>
       </div>
@@ -145,12 +182,47 @@
 
   <section id="hobbies">
     <h2>Hobbies</h2>
-    <p>Outside of engineering, I enjoy gaming, biking, building DIY electronics, and exploring language and literature — especially poetic concepts like “reverie.”</p>
+    <div class="card-grid">
+      <div class="card">
+        <img src="gym.jpg" alt="Gym">
+        <h4>Gym & Fitness</h4>
+        <p>I enjoy strength training and staying active at the gym.</p>
+      </div>
+      <div class="card">
+        <img src="bows.jpg" alt="Bow Building">
+        <h4>Bow Building</h4>
+        <p>Crafting bows combines engineering precision with creativity.</p>
+      </div>
+      <div class="card">
+        <img src="sports.jpg" alt="Sports">
+        <h4>Sports</h4>
+        <p>Playing soccer and basketball keeps me energized and connected with friends.</p>
+      </div>
+      <div class="card">
+        <img src="gaming.jpg" alt="Gaming">
+        <h4>Gaming</h4>
+        <p>I enjoy console and mobile gaming as a way to relax and compete.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Previous Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h4>Memorial University of Newfoundland</h4>
+        <p>Bachelor of Electrical Engineering (In Progress)</p>
+      </div>
+      <div class="edu-card">
+        <h4>High School</h4>
+        <p>Completed advanced courses in Physics, Math, and Computer Science</p>
+      </div>
+      <div class="edu-card">
+        <h4>Online Courses</h4>
+        <p>Certifications in C++ programming and CAD design</p>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 Nuh Afridi | Built with GitHub Pages</p>
-  </footer>
-
-</body>
-</html>
+    <p>© 
