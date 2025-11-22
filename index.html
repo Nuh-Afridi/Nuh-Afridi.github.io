@@ -12,7 +12,6 @@
       background-color: #f0f4f8;
       color: #263238;
       line-height: 1.6;
-      transition: background-color 0.3s, color 0.3s;
     }
     header {
       background-color: #2e7d32;
@@ -51,16 +50,11 @@
       border-radius: 12px;
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       opacity: 0;
       transform: translateY(20px);
     }
     .card.reveal {
       animation: fadeInUp 0.8s forwards;
-    }
-    .card:hover {
-      transform: translateY(-5px) rotate(-1deg);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
     .card img {
       width: 100%;
@@ -72,46 +66,6 @@
       margin-bottom: 10px;
       color: #2e7d32;
     }
-    footer {
-      background-color: #2e7d32;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-    html { scroll-behavior: smooth; }
-
-    /* Dark mode */
-    .dark {
-      background-color: #121212;
-      color: #f0f0f0;
-    }
-    .dark header, .dark footer {
-      background-color: #1b5e20;
-    }
-    .dark .card {
-      background-color: #1e1e1e;
-      color: #f0f0f0;
-    }
-
-    /* Animation */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Toggle button */
-    #theme-toggle {
-      background: #fff;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-left: 20px;
-    }
-
-    /* Education cards */
     .edu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -124,14 +78,22 @@
       padding: 15px;
       border-radius: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
       opacity: 0;
     }
     .edu-card.reveal {
       animation: fadeInUp 0.8s forwards;
     }
-    .edu-card:hover {
-      transform: translateY(-3px);
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    html { scroll-behavior: smooth; }
+    footer {
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -145,7 +107,6 @@
       <a href="#projects">Projects</a>
       <a href="#hobbies">Hobbies</a>
       <a href="#education">Education</a>
-      <button id="theme-toggle">🌙 Dark Mode</button>
     </nav>
   </header>
 
@@ -225,4 +186,22 @@
   </section>
 
   <footer>
-    <p>© 2025 Nuh Afridi | Built with GitHub Pages</
+    <p>© 2025 Nuh Afridi | Built with GitHub Pages</p>
+  </footer>
+
+  <script>
+    // Smooth reveal on scroll
+    const revealElements = document.querySelectorAll('.card, .edu-card');
+    function revealOnScroll() {
+      const windowHeight = window.innerHeight;
+      revealElements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < windowHeight - 50) el.classList.add('reveal');
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+
+</body>
+</html>
